@@ -28,39 +28,46 @@ while again.lower() == "y":
             break
 
         #retrieve departure
-        while True:
-            date_str = input("Enter departure date (yyyy-mm-dd): ")
-            try:
-                departure_date = datetime.strptime(date_str, "%y-%m-%d")
-            except ValueError:
-                print("Invalid date format. Try again.")
-                print()
-            else:
-               break
+    while True:
+        date_str = input("Enter departure date (YYYY-MM-DD): ")
+        try:
+            departure_date = datetime.strptime(date_str, "%Y-%m-%d")
+        except ValueError:
+            print("Invalid date format. Try again.")
+            print()
+            continue
 
-        print()
+        if departure_date <= arrival_date:
+            print("Departure date must be after arrival date. Try again.")
+            print()
+        else:
+            break
+print()
 
-    #total nights * cost
-    rate = 85.0
-    rate_message = ""
-    if arrival_date.month == 8: #busy in august
-        rate = 105.0
-        rate_message = "(High Season)" 
-    total_nights = (departure_date - arrival_date).days
-    total_cost = rate * total_nights
+#total nights * cost
+rate = 85.0
+rate_message = ""
+if arrival_date.month == 8: #busy in august
+   rate = 105.0
+   rate_message = "(High Season)" 
+total_nights = (departure_date - arrival_date).days
+total_cost = rate * total_nights
 
-    #results
-    date_format = "%b %d, %y"
-    locale.setlocale(locale.LC_ALL, "en_US")
-    print(f"Arrival Date:   {arrival_date:{date_format}}")
-    print(f"Departure Date:   {departure_date:{date_format}}")
-    print(f"Nightly Rate:   {locale.currency(rate)} {rate_message}")
-    print(f"Total Nights:   {total_nights}")
-    print(f"Total Price:   {locale.currency(total_cost)}")
-    print()
+ #results
+ #date_format = "%B %d, %Y"
+locale.setlocale(locale.LC_ALL, "en_US")
+print(f"Arrival Date:   {arrival_date:{date_format}}")
+print(f"Departure Date: {departure_date:{date_format}}")
+print(f"Nightly Rate:   {locale.currency(rate)} {rate_message}")
+print(f"Total Nights:   {total_nights}")
+print(f"Total Price:    {locale.currency(total_cost)}")
+print()
 
-    again = input("Continue?  (Y/N):  ")  #begin again?
-    print()
-
+again = input("Continue? (Y/N):  ")  #begin again?
+print()
 
 print("Thank you!")  #end
+
+
+
+
