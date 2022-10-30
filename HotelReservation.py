@@ -42,30 +42,30 @@ while again.lower() == "y":
             print()
         else:
             break
-print()
+    print()
 
 #total nights * cost
-rate = 85.0
-rate_message = ""
-if arrival_date.month == 8: #busy in august
-   rate = 105.0
-   rate_message = "(High Season)" 
-total_nights = (departure_date - arrival_date).days
-total_cost = rate * total_nights
+    rate = 85.0
+    rate_message = ""
+    if arrival_date.month == 8: #busy in august
+        rate = 105.0
+        rate_message = "(High Season)" 
+    total_nights = (departure_date - arrival_date).days
+    total_cost = rate * total_nights
 
  #results
- #date_format = "%B %d, %Y"
-locale.setlocale(locale.LC_ALL, "en_US")
-print(f"Arrival Date:   {arrival_date:{date_format}}")
-print(f"Departure Date: {departure_date:{date_format}}")
-print(f"Nightly Rate:   {locale.currency(rate)} {rate_message}")
-print(f"Total Nights:   {total_nights}")
-print(f"Total Price:    {locale.currency(total_cost)}")
-print()
+    date_format = "%B %d, %Y"
+    locale.setlocale(locale.LC_ALL, "en_US")
+    print(f"Arrival Date:   {arrival_date:{date_format}}")
+    print(f"Departure Date: {departure_date:{date_format}}")
+    print(f"Nightly Rate:   {locale.currency(rate)} {rate_message}")
+    print(f"Total Nights:   {total_nights}")
+    print(f"Total Price:    {locale.currency(total_cost)}")
+    print()
 
-again = input("Continue? (Y/N):  ")  #begin again?
-print()
-
+    again = input("Continue? (Y/N):  ")  #begin again?
+    print()
+    
 print("Thank you!")  #end
 
 
